@@ -1,133 +1,567 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KARVEX LOGISTICS</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-<style>
-body{
-    margin:0;
-    font-family: Arial, sans-serif;
-    background:#0f1f1a;
-    color:white;
-}
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:40px 20px;
-}
-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-.logo{
-    font-weight:bold;
-    letter-spacing:2px;
-}
-.lang button{
-    background:none;
-    border:1px solid #0f6b4f;
-    color:white;
-    padding:6px 10px;
-    cursor:pointer;
-}
-.hero{
-    margin-top:80px;
-}
-.hero h1{
-    font-size:42px;
-}
-.hero p{
-    color:#cccccc;
-    max-width:600px;
-}
-.btn{
-    margin-top:20px;
-    display:inline-block;
-    padding:12px 20px;
-    background:#c8a552;
-    color:black;
-    text-decoration:none;
-    font-weight:bold;
-}
-.section{
-    margin-top:80px;
-}
-.card{
-    background:#142a23;
-    padding:20px;
-    margin-top:15px;
-}
-footer{
-    margin-top:80px;
-    border-top:1px solid #1f3a30;
-    padding-top:20px;
-    color:#aaaaaa;
-}
-</style>
+  <title>KARVEX LOGISTICS — Международные автоперевозки (RU/EN)</title>
+  <meta name="description" content="KARVEX LOGISTICS — международные автоперевозки (FTL) по СНГ, Турции, Центральной Азии и Азербайджану. Тенты/шторы, рефрижераторы. Запрос ставки онлайн." />
+  <meta name="keywords" content="KARVEX LOGISTICS, международные перевозки, автоперевозки, экспедирование, FTL, freight forwarding, road freight, Uzbekistan logistics, CIS logistics, Turkey freight, Central Asia transport, reefer, tarp truck" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="KARVEX LOGISTICS" />
+  <meta property="og:description" content="International road freight (CIS • Turkey • Central Asia • Azerbaijan). Get a quote." />
+  <meta property="og:type" content="website" />
+
+  <!-- Structured Data (Organization) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"KARVEX LOGISTICS",
+    "url":"https://karvexlogistics.com",
+    "email":["info@karvexlogistics.com","sales@karvexlogistics.com"],
+    "telephone":"+998993096050",
+    "areaServed":["CIS","Turkey","Central Asia","Azerbaijan"],
+    "description":"International road freight (FTL). Tarp/curtain trucks and reefers. Dispatching and forwarding."
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#0b0f0d;
+      --card:rgba(255,255,255,.04);
+      --line:rgba(255,255,255,.10);
+      --text:#e7efe9;
+      --muted:#b9c7be;
+      --emerald:#0f6b4f;
+      --emerald2:#0a4c38;
+      --gold:#c8a552;
+      --shadow:0 18px 50px rgba(0,0,0,.35);
+      --r:18px;
+      --max:1120px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans",sans-serif;
+      background:
+        radial-gradient(1100px 600px at 10% 5%, rgba(15,107,79,.35), transparent 60%),
+        radial-gradient(900px 520px at 90% 15%, rgba(200,165,82,.20), transparent 55%),
+        radial-gradient(900px 520px at 50% 110%, rgba(15,107,79,.25), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 70px}
+    header{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; padding:10px 0 22px;
+    }
+    .brand{display:flex; align-items:center; gap:12px; min-width:220px}
+    .mark{
+      width:44px; height:44px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(15,107,79,.95), rgba(200,165,82,.70));
+      box-shadow: 0 10px 26px rgba(0,0,0,.35);
+      position:relative; overflow:hidden;
+    }
+    .mark:before{
+      content:""; position:absolute; inset:-12px;
+      background: radial-gradient(circle at 35% 40%, rgba(255,255,255,.35), transparent 45%);
+      transform: rotate(18deg);
+    }
+    .brand h1{font-size:14px; letter-spacing:.18em; margin:0; text-transform:uppercase}
+    .brand small{display:block; color:var(--muted); letter-spacing:.08em; margin-top:2px}
+
+    .top-actions{display:flex; align-items:center; gap:10px}
+    .pill{
+      border:1px solid var(--line);
+      padding:10px 12px; border-radius:999px;
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      display:none;
+    }
+    @media (min-width:860px){ .pill{display:inline-flex} }
+    .lang{
+      display:inline-flex; gap:6px; padding:6px; border:1px solid var(--line); border-radius:14px;
+      background: rgba(255,255,255,.03);
+    }
+    .lang button{
+      border:0; cursor:pointer; padding:8px 10px; border-radius:12px;
+      background: transparent; color: var(--muted); font-weight:750; letter-spacing:.04em;
+    }
+    .lang button.active{
+      background: rgba(15,107,79,.35);
+      color: var(--text);
+      outline:1px solid rgba(15,107,79,.45);
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+    }
+
+    .hero{
+      display:grid; gap:16px;
+      grid-template-columns: 1fr;
+      padding: 10px 0 8px;
+    }
+    @media (min-width: 980px){
+      .hero{ grid-template-columns: 1.2fr .8fr; align-items:stretch; }
+    }
+    .hero-main{ padding: 26px 22px; position:relative; overflow:hidden; }
+    .hero-main:before{
+      content:""; position:absolute; inset:-40px;
+      background:
+        radial-gradient(420px 220px at 20% 15%, rgba(200,165,82,.18), transparent 60%),
+        radial-gradient(520px 260px at 85% 30%, rgba(15,107,79,.26), transparent 60%);
+      pointer-events:none;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px; border-radius:999px;
+      border:1px solid rgba(200,165,82,.35);
+      background: rgba(200,165,82,.10);
+      color:#f3e7c8;
+      font-weight:750;
+      font-size:12px;
+      position:relative; z-index:1;
+    }
+    .badge .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 4px rgba(200,165,82,.18);
+    }
+    .title{
+      margin: 14px 0 8px;
+      font-size: 36px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      position:relative; z-index:1;
+    }
+    @media (min-width: 520px){ .title{font-size:44px} }
+    .subtitle{
+      margin:0;
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 70ch;
+      position:relative; z-index:1;
+    }
+    .cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; position:relative; z-index:1;}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 12px 16px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      font-weight: 800;
+      letter-spacing:.02em;
+      cursor:pointer;
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(15,107,79,.92), rgba(15,107,79,.58));
+      border-color: rgba(15,107,79,.75);
+    }
+    .btn.gold{
+      background: linear-gradient(135deg, rgba(200,165,82,.95), rgba(200,165,82,.55));
+      border-color: rgba(200,165,82,.75);
+      color:#1a1407;
+    }
+    .btn:hover{ transform: translateY(-1px); transition: .18s ease; }
+    .btn:active{ transform: translateY(0px); }
+
+    .hero-side{ padding: 18px 18px; display:flex; flex-direction:column; gap:12px; }
+    .mini{
+      padding: 14px 14px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.10);
+      border-radius: 16px;
+    }
+    .mini h3{ margin:0 0 6px; font-size: 13px; letter-spacing:.12em; text-transform:uppercase; color:#dce7df; }
+    .mini p{ margin:0; color: var(--muted); font-size: 14px; }
+    .list{ margin:10px 0 0; padding:0; list-style:none; display:grid; gap:8px; }
+    .list li{
+      display:flex; gap:10px; align-items:flex-start;
+      color: var(--muted);
+      font-size:14px;
+      border-top:1px dashed rgba(255,255,255,.10);
+      padding-top:10px;
+    }
+    .list li:first-child{border-top:0; padding-top:0}
+    .check{
+      width:18px; height:18px; border-radius:6px;
+      background: rgba(15,107,79,.30);
+      border:1px solid rgba(15,107,79,.55);
+      display:inline-flex; align-items:center; justify-content:center;
+      flex:0 0 auto; margin-top:1px;
+      color:#dff5ea; font-weight:900;
+    }
+
+    section{ margin-top: 14px; }
+    .grid{ display:grid; gap:14px; grid-template-columns: 1fr; }
+    @media (min-width: 900px){ .grid{ grid-template-columns: 1fr 1fr; } }
+    .block{ padding: 18px 18px; }
+    .block h2{
+      margin:0 0 10px;
+      font-size: 16px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:#e9f2ec;
+    }
+    .muted{ color: var(--muted); margin:0; font-size: 14px; }
+
+    .cards{display:grid; gap:10px; grid-template-columns:1fr; margin-top:10px}
+    @media (min-width: 640px){ .cards{grid-template-columns:1fr 1fr} }
+    .item{
+      padding: 14px 14px;
+      border:1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.03);
+    }
+    .item b{display:block; margin-bottom:6px}
+
+    form{margin-top:12px}
+    .fields{display:grid; gap:10px; grid-template-columns:1fr}
+    @media (min-width: 900px){ .fields{grid-template-columns:1fr 1fr} }
+    label{font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
+    input, textarea, select{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.12);
+      color: var(--text);
+      outline:none;
+    }
+    textarea{min-height:110px; resize:vertical}
+    .hint{color:var(--muted); font-size:13px; margin-top:10px}
+    .contacts{display:grid; gap:10px; grid-template-columns:1fr; margin-top:10px}
+    @media (min-width: 900px){ .contacts{grid-template-columns:1fr 1fr 1fr} }
+    .contact{
+      padding: 14px 14px;
+      border:1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(0,0,0,.10);
+    }
+    .contact small{display:block; color:var(--muted); letter-spacing:.12em; text-transform:uppercase}
+    .contact a{display:block; margin-top:6px; font-weight:900}
+
+    footer{
+      margin-top: 22px;
+      display:flex; flex-wrap:wrap; gap:10px;
+      align-items:center; justify-content:space-between;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+    }
+  </style>
 </head>
 
 <body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="mark" aria-hidden="true"></div>
+      <div>
+        <h1>KARVEX LOGISTICS</h1>
+        <small data-i18n="tagline">Международные автоперевозки</small>
+      </div>
+    </div>
 
-<div class="container">
+    <div class="top-actions">
+      <span class="pill" data-i18n="geo">СНГ • Турция • Центральная Азия • Азербайджан</span>
+      <div class="lang" role="group" aria-label="Language switcher">
+        <button id="btn-ru" class="active" type="button">RU</button>
+        <button id="btn-en" type="button">EN</button>
+      </div>
+    </div>
+  </header>
 
-<header>
-<div class="logo">KARVEX LOGISTICS</div>
-<div class="lang">
-<button onclick="setLang('ru')">RU</button>
-<button onclick="setLang('en')">EN</button>
-</div>
-</header>
+  <main>
+    <div class="hero">
+      <div class="card hero-main">
+        <div class="badge"><span class="dot"></span><span data-i18n="badge">Быстро. Понятно. Под контролем.</span></div>
+        <h2 class="title" data-i18n="hero_title">Автоперевозки (FTL) для бизнеса</h2>
+        <p class="subtitle" data-i18n="hero_sub">
+          Организуем международные перевозки по ключевым направлениям. Тенты/шторы и рефрижераторы. Запрос ставки — за 1 минуту.
+        </p>
+        <div class="cta">
+          <a class="btn gold" href="#quote" data-i18n="cta_quote">Запросить ставку</a>
+          <a class="btn primary" href="mailto:sales@karvexlogistics.com" data-i18n="cta_email">Написать в продажи</a>
+          <a class="btn" href="tel:+998993096050" data-i18n="cta_call">Позвонить</a>
+        </div>
+      </div>
 
-<div class="hero">
-<h1 id="title">Международные автоперевозки</h1>
-<p id="subtitle">Организуем перевозки по СНГ, Турции, Центральной Азии и Азербайджану.</p>
-<a href="mailto:sales@karvexlogistics.com" class="btn" id="btn">Запросить ставку</a>
-</div>
+      <div class="card hero-side">
+        <div class="mini">
+          <h3 data-i18n="mini_title">Услуги</h3>
+          <p data-i18n="mini_text">FTL + экспедирование, подбор перевозчика под задачу.</p>
+          <ul class="list">
+            <li><span class="check">✓</span><span data-i18n="p1">Тенты / шторы (curtain)</span></li>
+            <li><span class="check">✓</span><span data-i18n="p2">Рефрижераторы</span></li>
+            <li><span class="check">✓</span><span data-i18n="p3">Экспорт / импорт</span></li>
+            <li><span class="check">✓</span><span data-i18n="p4">Проверка контрагентов</span></li>
+          </ul>
+        </div>
+        <div class="mini">
+          <h3 data-i18n="mini2_title">Фокус</h3>
+          <p data-i18n="mini2_text">СНГ, Турция, Центральная Азия, Азербайджан. Европа и Африка — не работаем.</p>
+        </div>
+      </div>
+    </div>
 
-<div class="section">
-<h2 id="servicesTitle">Услуги</h2>
+    <section class="grid">
+      <div class="card block">
+        <h2 data-i18n="routes_title">Направления</h2>
+        <p class="muted" data-i18n="routes_text">Популярные коридоры — подберём транспорт под ваш маршрут и сроки.</p>
+        <div class="cards">
+          <div class="item"><b data-i18n="r1t">СНГ</b><span data-i18n="r1">Узбекистан ↔ Казахстан ↔ Россия и др.</span></div>
+          <div class="item"><b data-i18n="r2t">Турция</b><span data-i18n="r2">Турция ↔ Центральная Азия / СНГ</span></div>
+          <div class="item"><b data-i18n="r3t">Центральная Азия</b><span data-i18n="r3">UZ ↔ KZ ↔ KG ↔ TJ ↔ TM</span></div>
+          <div class="item"><b data-i18n="r4t">Азербайджан</b><span data-i18n="r4">AZ ↔ СНГ / Центральная Азия</span></div>
+        </div>
+      </div>
 
-<div class="card">FTL — Полная машина</div>
-<div class="card">Тенты / Шторы</div>
-<div class="card">Рефрижераторы</div>
-<div class="card">Экспорт / Импорт сопровождение</div>
-</div>
+      <div class="card block">
+        <h2 data-i18n="process_title">Как мы работаем</h2>
+        <p class="muted" data-i18n="process_text">Простой и понятный процесс, чтобы клиенту было спокойно.</p>
+        <ul class="list" style="margin-top:12px">
+          <li><span class="check">1</span><span data-i18n="s1">Вы присылаете маршрут, груз, даты</span></li>
+          <li><span class="check">2</span><span data-i18n="s2">Мы подбираем перевозчика и проверяем</span></li>
+          <li><span class="check">3</span><span data-i18n="s3">Согласуем ставку и условия</span></li>
+          <li><span class="check">4</span><span data-i18n="s4">Контролируем перевозку и связь</span></li>
+          <li><span class="check">5</span><span data-i18n="s5">Доставка + закрывающие документы</span></li>
+        </ul>
+      </div>
+    </section>
 
-<div class="section">
-<h2 id="contactsTitle">Контакты</h2>
-<div class="card">
-Телефон: +998 99 309 60 50<br>
-Email: info@karvexlogistics.com<br>
-Sales: sales@karvexlogistics.com
-</div>
-</div>
+    <section class="card block" id="quote">
+      <h2 data-i18n="quote_title">Запрос ставки</h2>
+      <p class="muted" data-i18n="quote_text">Заполните форму — откроется письмо на sales@ с готовым текстом. (Бесплатно, без серверов.)</p>
 
-<footer>
-© 2026 KARVEX LOGISTICS
-</footer>
+      <form id="quoteForm">
+        <div class="fields">
+          <div>
+            <label data-i18n="f_name">Имя / Компания</label>
+            <input id="fName" placeholder="KARVEX / Client LLC" required />
+          </div>
+          <div>
+            <label data-i18n="f_phone">Телефон (WhatsApp/Telegram)</label>
+            <input id="fPhone" placeholder="+998 ..." required />
+          </div>
+          <div>
+            <label data-i18n="f_route">Маршрут</label>
+            <input id="fRoute" placeholder="Tashkent → Almaty" required />
+          </div>
+          <div>
+            <label data-i18n="f_type">Тип транспорта</label>
+            <select id="fType">
+              <option value="Tarp/Curtain" data-i18n="opt1">Тент / Штора</option>
+              <option value="Reefer" data-i18n="opt2">Рефрижератор</option>
+              <option value="Other" data-i18n="opt3">Другое</option>
+            </select>
+          </div>
+        </div>
 
+        <div style="margin-top:10px">
+          <label data-i18n="f_details">Груз / вес / объём / даты</label>
+          <textarea id="fDetails" placeholder="Например: 20 т, паллеты, дата погрузки 25.02, выгрузка 28.02"></textarea>
+        </div>
+
+        <div class="cta" style="margin-top:14px">
+          <button class="btn gold" type="submit" data-i18n="send_btn">Отправить запрос</button>
+          <a class="btn" href="#contacts" data-i18n="alt_contacts">Контакты</a>
+        </div>
+
+        <div class="hint" data-i18n="hint">
+          Если письмо не открылось — напишите напрямую на sales@ или позвоните.
+        </div>
+      </form>
+    </section>
+
+    <section class="card block" id="contacts">
+      <h2 data-i18n="contacts_title">Контакты</h2>
+      <p class="muted" data-i18n="contacts_text">Быстрее всего отвечаем в sales@ и по телефону.</p>
+
+      <div class="contacts">
+        <div class="contact">
+          <small data-i18n="c_phone">Телефон</small>
+          <a href="tel:+998993096050">+998 99 309 60 50</a>
+        </div>
+        <div class="contact">
+          <small data-i18n="c_email">Почта</small>
+          <a href="mailto:info@karvexlogistics.com">info@karvexlogistics.com</a>
+        </div>
+        <div class="contact">
+          <small data-i18n="c_sales">Отдел продаж</small>
+          <a href="mailto:sales@karvexlogistics.com">sales@karvexlogistics.com</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> KARVEX LOGISTICS</div>
+      <div data-i18n="foot">International road freight • RU / EN</div>
+    </footer>
+  </main>
 </div>
 
 <script>
-function setLang(lang){
-if(lang==='en'){
-document.getElementById('title').innerText="International Road Freight";
-document.getElementById('subtitle').innerText="We organize transportation across CIS, Turkey, Central Asia and Azerbaijan.";
-document.getElementById('btn').innerText="Get a Quote";
-document.getElementById('servicesTitle').innerText="Services";
-document.getElementById('contactsTitle').innerText="Contacts";
-}else{
-document.getElementById('title').innerText="Международные автоперевозки";
-document.getElementById('subtitle').innerText="Организуем перевозки по СНГ, Турции, Центральной Азии и Азербайджану.";
-document.getElementById('btn').innerText="Запросить ставку";
-document.getElementById('servicesTitle').innerText="Услуги";
-document.getElementById('contactsTitle').innerText="Контакты";
-}
-}
-</script>
+  const dict = {
+    ru: {
+      tagline:"Международные автоперевозки",
+      geo:"СНГ • Турция • Центральная Азия • Азербайджан",
+      badge:"Быстро. Понятно. Под контролем.",
+      hero_title:"Автоперевозки (FTL) для бизнеса",
+      hero_sub:"Организуем международные перевозки по ключевым направлениям. Тенты/шторы и рефрижераторы. Запрос ставки — за 1 минуту.",
+      cta_quote:"Запросить ставку",
+      cta_email:"Написать в продажи",
+      cta_call:"Позвонить",
+      mini_title:"Услуги",
+      mini_text:"FTL + экспедирование, подбор перевозчика под задачу.",
+      p1:"Тенты / шторы (curtain)",
+      p2:"Рефрижераторы",
+      p3:"Экспорт / импорт",
+      p4:"Проверка контрагентов",
+      mini2_title:"Фокус",
+      mini2_text:"СНГ, Турция, Центральная Азия, Азербайджан. Европа и Африка — не работаем.",
+      routes_title:"Направления",
+      routes_text:"Популярные коридоры — подберём транспорт под ваш маршрут и сроки.",
+      r1t:"СНГ", r1:"Узбекистан ↔ Казахстан ↔ Россия и др.",
+      r2t:"Турция", r2:"Турция ↔ Центральная Азия / СНГ",
+      r3t:"Центральная Азия", r3:"UZ ↔ KZ ↔ KG ↔ TJ ↔ TM",
+      r4t:"Азербайджан", r4:"AZ ↔ СНГ / Центральная Азия",
+      process_title:"Как мы работаем",
+      process_text:"Простой и понятный процесс, чтобы клиенту было спокойно.",
+      s1:"Вы присылаете маршрут, груз, даты",
+      s2:"Мы подбираем перевозчика и проверяем",
+      s3:"Согласуем ставку и условия",
+      s4:"Контролируем перевозку и связь",
+      s5:"Доставка + закрывающие документы",
+      quote_title:"Запрос ставки",
+      quote_text:"Заполните форму — откроется письмо на sales@ с готовым текстом. (Бесплатно, без серверов.)",
+      f_name:"Имя / Компания",
+      f_phone:"Телефон (WhatsApp/Telegram)",
+      f_route:"Маршрут",
+      f_type:"Тип транспорта",
+      opt1:"Тент / Штора",
+      opt2:"Рефрижератор",
+      opt3:"Другое",
+      f_details:"Груз / вес / объём / даты",
+      send_btn:"Отправить запрос",
+      alt_contacts:"Контакты",
+      hint:"Если письмо не открылось — напишите напрямую на sales@ или позвоните.",
+      contacts_title:"Контакты",
+      contacts_text:"Быстрее всего отвечаем в sales@ и по телефону.",
+      c_phone:"Телефон",
+      c_email:"Почта",
+      c_sales:"Отдел продаж",
+      foot:"Международные автоперевозки • RU / EN"
+    },
+    en: {
+      tagline:"International Road Freight",
+      geo:"CIS • Turkey • Central Asia • Azerbaijan",
+      badge:"Fast. Clear. Controlled.",
+      hero_title:"FTL road freight for business",
+      hero_sub:"International trucking across key corridors. Tarp/curtain trucks and reefers. Get a quote in 1 minute.",
+      cta_quote:"Get a quote",
+      cta_email:"Email sales",
+      cta_call:"Call",
+      mini_title:"Services",
+      mini_text:"FTL + forwarding, carrier selection for your needs.",
+      p1:"Trucks: tarp / curtain",
+      p2:"Reefer",
+      p3:"Export / import",
+      p4:"Counterparty verification",
+      mini2_title:"Focus",
+      mini2_text:"CIS, Turkey, Central Asia, Azerbaijan. We do not operate Europe or Africa.",
+      routes_title:"Routes",
+      routes_text:"Popular corridors — we match the right truck to your route and timing.",
+      r1t:"CIS", r1:"Uzbekistan ↔ Kazakhstan ↔ Russia etc.",
+      r2t:"Turkey", r2:"Turkey ↔ Central Asia / CIS",
+      r3t:"Central Asia", r3:"UZ ↔ KZ ↔ KG ↔ TJ ↔ TM",
+      r4t:"Azerbaijan", r4:"AZ ↔ CIS / Central Asia",
+      process_title:"How we work",
+      process_text:"A simple workflow that builds trust in B2B logistics.",
+      s1:"You send route, cargo, dates",
+      s2:"We select and verify a carrier",
+      s3:"Agree rate and terms",
+      s4:"Control transportation and communication",
+      s5:"Delivery + closing documents",
+      quote_title:"Request a quote",
+      quote_text:"Fill the form — it opens an email to sales@ with a prepared message. (Free, no servers.)",
+      f_name:"Name / Company",
+      f_phone:"Phone (WhatsApp/Telegram)",
+      f_route:"Route",
+      f_type:"Truck type",
+      opt1:"Tarp / Curtain",
+      opt2:"Reefer",
+      opt3:"Other",
+      f_details:"Cargo / weight / volume / dates",
+      send_btn:"Send request",
+      alt_contacts:"Contacts",
+      hint:"If email doesn’t open — message sales@ directly or call us.",
+      contacts_title:"Contacts",
+      contacts_text:"Fastest response via sales@ and phone.",
+      c_phone:"Phone",
+      c_email:"Email",
+      c_sales:"Sales",
+      foot:"International road freight • RU / EN"
+    }
+  };
 
+  const ruBtn = document.getElementById('btn-ru');
+  const enBtn = document.getElementById('btn-en');
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  function applyLang(lang){
+    document.documentElement.lang = lang === 'ru' ? 'ru' : 'en';
+    ruBtn.classList.toggle('active', lang === 'ru');
+    enBtn.classList.toggle('active', lang === 'en');
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(dict[lang] && dict[lang][key]) el.textContent = dict[lang][key];
+    });
+    try{ localStorage.setItem('karvex_lang', lang); }catch(e){}
+  }
+  ruBtn.addEventListener('click', ()=>applyLang('ru'));
+  enBtn.addEventListener('click', ()=>applyLang('en'));
+
+  let initial = 'ru';
+  try{
+    const saved = localStorage.getItem('karvex_lang');
+    if(saved === 'en' || saved === 'ru') initial = saved;
+    else if((navigator.language || '').toLowerCase().startsWith('en')) initial = 'en';
+  }catch(e){}
+  applyLang(initial);
+
+  // Quote form -> opens email with prepared body (free)
+  document.getElementById('quoteForm').addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const name = document.getElementById('fName').value.trim();
+    const phone = document.getElementById('fPhone').value.trim();
+    const route = document.getElementById('fRoute').value.trim();
+    const type = document.getElementById('fType').value;
+    const details = document.getElementById('fDetails').value.trim();
+
+    const lang = (localStorage.getItem('karvex_lang') || 'ru');
+    const subject = lang === 'en'
+      ? `Quote request — ${route}`
+      : `Запрос ставки — ${route}`;
+
+    const body = lang === 'en'
+      ? `Hello KARVEX LOGISTICS,\n\nPlease provide a quote:\n\nName/Company: ${name}\nPhone: ${phone}\nRoute: ${route}\nTruck type: ${type}\nCargo details: ${details || "-"}\n\nThank you.`
+      : `Здравствуйте, KARVEX LOGISTICS!\n\nПрошу рассчитать ставку:\n\nИмя/Компания: ${name}\nТелефон: ${phone}\nМаршрут: ${route}\nТип транспорта: ${type}\nДетали груза: ${details || "-"}\n\nСпасибо.`;
+
+    const mailto = `mailto:sales@karvexlogistics.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+  });
+</script>
 </body>
 </html>
