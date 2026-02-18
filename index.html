@@ -60,17 +60,17 @@
       gap:12px; padding:10px 0 22px;
     }
     .brand{display:flex; align-items:center; gap:12px; min-width:220px}
-    .mark{
+
+    /* LOGO (replaces the old gradient mark) */
+    .brand-logo{
       width:44px; height:44px; border-radius:14px;
-      background: linear-gradient(135deg, rgba(15,107,79,.95), rgba(200,165,82,.70));
+      object-fit:cover;
       box-shadow: 0 10px 26px rgba(0,0,0,.35);
-      position:relative; overflow:hidden;
+      display:block;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
     }
-    .mark:before{
-      content:""; position:absolute; inset:-12px;
-      background: radial-gradient(circle at 35% 40%, rgba(255,255,255,.35), transparent 45%);
-      transform: rotate(18deg);
-    }
+
     .brand h1{font-size:14px; letter-spacing:.18em; margin:0; text-transform:uppercase}
     .brand small{display:block; color:var(--muted); letter-spacing:.08em; margin-top:2px}
 
@@ -266,7 +266,8 @@
 <div class="wrap">
   <header>
     <div class="brand">
-      <div class="mark" aria-hidden="true"></div>
+      <!-- Replace gradient mark with your logo file -->
+      <img class="brand-logo" src="logo.png" alt="KARVEX LOGISTICS" />
       <div>
         <h1>KARVEX LOGISTICS</h1>
         <small data-i18n="tagline">Международные автоперевозки</small>
@@ -292,7 +293,14 @@
         </p>
         <div class="cta">
           <a class="btn gold" href="#quote" data-i18n="cta_quote">Запросить ставку</a>
-          <a class="btn primary" href="mailto:sales@karvexlogistics.com" data-i18n="cta_email">Написать в продажи</a>
+
+          <!-- Sales -> Telegram -->
+          <a class="btn primary" href="https://t.me/karvex_logistics" target="_blank" rel="noopener" data-i18n="cta_tg">Написать в Telegram</a>
+
+          <!-- WhatsApp -->
+          <a class="btn" href="https://wa.me/998993096050" target="_blank" rel="noopener" data-i18n="cta_wa">WhatsApp</a>
+
+          <!-- Call -->
           <a class="btn" href="tel:+998993096050" data-i18n="cta_call">Позвонить</a>
         </div>
       </div>
@@ -375,6 +383,11 @@
 
         <div class="cta" style="margin-top:14px">
           <button class="btn gold" type="submit" data-i18n="send_btn">Отправить запрос</button>
+
+          <!-- Quick Telegram / WhatsApp access from quote block -->
+          <a class="btn primary" href="https://t.me/karvex_logistics" target="_blank" rel="noopener" data-i18n="tg_btn">Telegram</a>
+          <a class="btn" href="https://wa.me/998993096050" target="_blank" rel="noopener" data-i18n="wa_btn">WhatsApp</a>
+
           <a class="btn" href="#contacts" data-i18n="alt_contacts">Контакты</a>
         </div>
 
@@ -386,17 +399,29 @@
 
     <section class="card block" id="contacts">
       <h2 data-i18n="contacts_title">Контакты</h2>
-      <p class="muted" data-i18n="contacts_text">Быстрее всего отвечаем в sales@ и по телефону.</p>
+      <p class="muted" data-i18n="contacts_text">Быстрее всего отвечаем в Telegram/WhatsApp и по телефону.</p>
 
       <div class="contacts">
         <div class="contact">
           <small data-i18n="c_phone">Телефон</small>
           <a href="tel:+998993096050">+998 99 309 60 50</a>
         </div>
+
+        <div class="contact">
+          <small data-i18n="c_tg">Telegram</small>
+          <a href="https://t.me/karvex_logistics" target="_blank" rel="noopener">@karvex_logistics</a>
+        </div>
+
+        <div class="contact">
+          <small data-i18n="c_wa">WhatsApp</small>
+          <a href="https://wa.me/998993096050" target="_blank" rel="noopener">+998 99 309 60 50</a>
+        </div>
+
         <div class="contact">
           <small data-i18n="c_email">Почта</small>
           <a href="mailto:info@karvexlogistics.com">info@karvexlogistics.com</a>
         </div>
+
         <div class="contact">
           <small data-i18n="c_sales">Отдел продаж</small>
           <a href="mailto:sales@karvexlogistics.com">sales@karvexlogistics.com</a>
@@ -420,7 +445,8 @@
       hero_title:"Автоперевозки (FTL) для бизнеса",
       hero_sub:"Организуем международные перевозки по ключевым направлениям. Тенты/шторы и рефрижераторы. Запрос ставки — за 1 минуту.",
       cta_quote:"Запросить ставку",
-      cta_email:"Написать в продажи",
+      cta_tg:"Написать в Telegram",
+      cta_wa:"WhatsApp",
       cta_call:"Позвонить",
       mini_title:"Услуги",
       mini_text:"FTL + экспедирование, подбор перевозчика под задачу.",
@@ -454,11 +480,15 @@
       opt3:"Другое",
       f_details:"Груз / вес / объём / даты",
       send_btn:"Отправить запрос",
+      tg_btn:"Telegram",
+      wa_btn:"WhatsApp",
       alt_contacts:"Контакты",
       hint:"Если письмо не открылось — напишите напрямую на sales@ или позвоните.",
       contacts_title:"Контакты",
-      contacts_text:"Быстрее всего отвечаем в sales@ и по телефону.",
+      contacts_text:"Быстрее всего отвечаем в Telegram/WhatsApp и по телефону.",
       c_phone:"Телефон",
+      c_tg:"Telegram",
+      c_wa:"WhatsApp",
       c_email:"Почта",
       c_sales:"Отдел продаж",
       foot:"Международные автоперевозки • RU / EN"
@@ -470,7 +500,8 @@
       hero_title:"FTL road freight for business",
       hero_sub:"International trucking across key corridors. Tarp/curtain trucks and reefers. Get a quote in 1 minute.",
       cta_quote:"Get a quote",
-      cta_email:"Email sales",
+      cta_tg:"Message on Telegram",
+      cta_wa:"WhatsApp",
       cta_call:"Call",
       mini_title:"Services",
       mini_text:"FTL + forwarding, carrier selection for your needs.",
@@ -504,11 +535,15 @@
       opt3:"Other",
       f_details:"Cargo / weight / volume / dates",
       send_btn:"Send request",
+      tg_btn:"Telegram",
+      wa_btn:"WhatsApp",
       alt_contacts:"Contacts",
       hint:"If email doesn’t open — message sales@ directly or call us.",
       contacts_title:"Contacts",
-      contacts_text:"Fastest response via sales@ and phone.",
+      contacts_text:"Fastest response via Telegram/WhatsApp and phone.",
       c_phone:"Phone",
+      c_tg:"Telegram",
+      c_wa:"WhatsApp",
       c_email:"Email",
       c_sales:"Sales",
       foot:"International road freight • RU / EN"
